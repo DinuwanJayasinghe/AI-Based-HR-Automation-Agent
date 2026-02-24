@@ -1,0 +1,13 @@
+{
+  "welcome": "Welcome to AI HR Manager",
+  "login": "Login",
+  "email": "Email Address",
+  "password": "Password",
+  "submit": "Submit",
+  "dashboard": "Dashboard",
+  "attendance": "Attendance",
+  "leave": "Leave",
+  "performance": "Performance",
+  "recruitment": "Recruitment",
+  "chat": "AI Assistant"
+}
