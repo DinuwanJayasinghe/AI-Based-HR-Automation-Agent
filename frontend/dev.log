@@ -1,0 +1,47 @@
+
+> hr-manager-frontend@0.1.0 dev
+> vite
+
+
+  VITE v4.5.14  ready in 1042 ms
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: use --host to expose
+9:29:12 AM [vite] page reload index.html
+9:29:33 AM [vite] ✨ new dependencies optimized: react-dom/client, react-router-dom, react-redux, @reduxjs/toolkit, react-hook-form, react-i18next, lucide-react, i18next, i18next-browser-languagedetector
+9:29:33 AM [vite] ✨ optimized dependencies changed. reloading
+9:32:54 AM [vite] hmr update /src/index.css, /src/App.tsx
+9:32:54 AM [vite] hmr update /src/index.css, /src/App.tsx
+9:32:54 AM [vite] hmr update /src/index.css, /src/App.tsx
+9:32:54 AM [vite] hmr update /src/index.css, /src/App.tsx
+9:32:54 AM [vite] hmr update /src/index.css, /src/App.tsx
+9:32:54 AM [vite] hmr update /src/index.css, /src/App.tsx
+9:32:54 AM [vite] hmr update /src/index.css, /src/App.tsx
+9:32:54 AM [vite] hmr update /src/index.css, /src/App.tsx
+9:33:39 AM [vite] page reload src/main.tsx
+9:36:21 AM [vite] hmr update /src/pages/Attendance.tsx, /src/index.css
+9:36:31 AM [vite] hmr update /src/pages/Leave.tsx, /src/index.css
+9:36:38 AM [vite] hmr update /src/pages/Chat.tsx, /src/index.css
+9:36:50 AM [vite] hmr update /src/pages/Employees.tsx, /src/index.css
+9:37:02 AM [vite] hmr update /src/pages/Performance.tsx, /src/index.css
+9:37:11 AM [vite] hmr update /src/pages/Recruitment.tsx, /src/index.css
+9:37:24 AM [vite] page reload src/components/LeaveForm.tsx
+9:37:39 AM [vite] ✨ new dependencies optimized: recharts
+9:37:39 AM [vite] ✨ optimized dependencies changed. reloading
+(node:25786) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+9:37:47 AM [vite] http proxy error at /api/v1/leave/apply:
+AggregateError [ECONNREFUSED]:
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+9:43:19 AM [vite] http proxy error at /api/v1/leave/apply:
+AggregateError [ECONNREFUSED]:
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+9:44:30 AM [vite] http proxy error at /api/v1/leave/apply:
+AggregateError [ECONNREFUSED]:
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+9:45:36 AM [vite] hmr update /src/pages/Reports.tsx, /src/index.css
+9:45:44 AM [vite] hmr update /src/pages/Notifications.tsx, /src/index.css
+9:48:07 AM [vite] hmr update /src/components/layout/MainLayout.tsx, /src/index.css
