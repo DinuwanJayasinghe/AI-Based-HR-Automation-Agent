@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import i18n from '../locales/i18n';
 
 const Login: React.FC = () => {
   const { t } = useTranslation();
@@ -18,6 +19,19 @@ const Login: React.FC = () => {
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             {t('welcome')}
           </h2>
+        </div>
+        <div className="flex justify-center space-x-2 mb-4">
+          {['en', 'si', 'ta'].map((lang) => (
+            <button
+              key={lang}
+              onClick={() => i18n.changeLanguage(lang)}
+              className={`px-3 py-1 text-sm font-bold rounded ${
+                i18n.language === lang ? 'bg-primary-600 text-white' : 'bg-gray-200 text-gray-600'
+              }`}
+            >
+              {lang.toUpperCase()}
+            </button>
+          ))}
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
           <div className="rounded-md shadow-sm -space-y-px">

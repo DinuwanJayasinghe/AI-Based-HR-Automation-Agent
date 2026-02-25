@@ -6,6 +6,9 @@ from app.models.leave import LeaveApplication
 from app.models.employee import Employee
 from app.core.ai_workflows import process_leave_application
 from pydantic import BaseModel
+import redis
+import json
+from app.core.config import settings
 from datetime import date
 from uuid import UUID
 
@@ -55,6 +58,17 @@ async def apply_leave(
     db.add(db_obj)
     db.commit()
     db.refresh(db_obj)
+
+    # Notify HR
+    try:
+        r = redis.from_url(settings.REDIS_URL)
+        r.publish('notifications', json.dumps({
+            "user_id": "hr_team",
+            "message": f"New leave request from {current_user.full_name}",
+            "type": "info"
+        }))
+    except:
+        pass
 
     return db_obj
 
