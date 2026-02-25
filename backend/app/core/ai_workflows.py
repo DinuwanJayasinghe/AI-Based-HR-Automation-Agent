@@ -3,6 +3,7 @@ from langgraph.graph import StateGraph, END
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import BaseMessage, HumanMessage, SystemMessage
 from app.core.config import settings
+from app.core.rag import query_policy
 import json
 
 class LeaveState(TypedDict):
@@ -22,8 +23,8 @@ def leave_approval_workflow():
         return state
 
     def retrieve_policy(state: LeaveState):
-        # Mock retrieval
-        state["policy_chunks"] = ["Employees are entitled to 21 days of annual leave."]
+        query = f"Leave policy for {state['request_data']['leave_type_id']} for {state['employee_data']['role']}"
+        state["policy_chunks"] = query_policy(query)
         return state
 
     def ai_decision_engine(state: LeaveState):

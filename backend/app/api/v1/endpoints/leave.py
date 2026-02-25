@@ -37,7 +37,8 @@ async def apply_leave(
     request_data = {
         "start_date": str(request.start_date),
         "end_date": str(request.end_date),
-        "reason": request.reason
+        "reason": request.reason,
+        "leave_type_id": str(request.leave_type_id)
     }
 
     # 2. Run AI Workflow

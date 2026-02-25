@@ -33,3 +33,7 @@ Comprehensive AI-powered HR Manager system for mid-sized organizations.
 6. Recruitment
 7. Reporting & Analytics
 8. Notification System
+
+## Debugging
+
+For detailed instructions on how to debug the system, please refer to [DEBUGGING.md](./DEBUGGING.md).
