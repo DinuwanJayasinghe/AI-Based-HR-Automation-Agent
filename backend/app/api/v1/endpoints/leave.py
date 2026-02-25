@@ -9,6 +9,7 @@ from pydantic import BaseModel
 import redis
 import json
 from app.core.config import settings
+from app.core.websocket_manager import manager
 from datetime import date
 from uuid import UUID
 
@@ -59,8 +60,17 @@ async def apply_leave(
     db.commit()
     db.refresh(db_obj)
 
-    # Notify HR
+    # Notify HR via WebSocket and Redis
     try:
+        await manager.broadcast({
+            "type": "dashboard_update",
+            "event": "leave_applied",
+            "data": {
+                "employee_name": current_user.full_name,
+                "leave_type": str(request.leave_type_id)
+            }
+        })
+
         r = redis.from_url(settings.REDIS_URL)
         r.publish('notifications', json.dumps({
             "user_id": "hr_team",

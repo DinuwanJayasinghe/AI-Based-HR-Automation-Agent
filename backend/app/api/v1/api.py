@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from app.api.v1.endpoints import (
-    employees, auth, attendance, leave, performance, recruitment, chat, notifications, reports, departments
+    employees, auth, attendance, leave, performance, recruitment, chat, notifications, reports, departments, websockets
 )
 
 api_router = APIRouter()
@@ -14,3 +14,4 @@ api_router.include_router(recruitment.router, prefix="/recruitment", tags=["recr
 api_router.include_router(chat.router, prefix="/chat", tags=["chat"])
 api_router.include_router(notifications.router, prefix="/notifications", tags=["notifications"])
 api_router.include_router(reports.router, prefix="/reports", tags=["reports"])
+api_router.include_router(websockets.router, tags=["websockets"])

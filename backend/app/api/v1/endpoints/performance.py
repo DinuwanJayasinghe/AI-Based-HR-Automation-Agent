@@ -9,6 +9,7 @@ from app.db.session import get_db
 from app.models.performance import PerformanceEvaluation
 from app.models.attendance import AttendanceRecord
 from app.models.employee import Employee
+from app.core.websocket_manager import manager
 
 router = APIRouter()
 
@@ -56,6 +57,17 @@ def evaluate_performance(
     db.add(evaluation)
     db.commit()
     db.refresh(evaluation)
+
+    # Real-time notification for performance evaluation
+    import asyncio
+    asyncio.create_task(manager.send_personal_message({
+        "type": "notification",
+        "data": {
+            "message": f"Your performance evaluation for {period} is ready. Score: {overall_score}",
+            "type": "info"
+        }
+    }, str(employee_id)))
+
     return evaluation
 
 @router.get("/{employee_id}/score")

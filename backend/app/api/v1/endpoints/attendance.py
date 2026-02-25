@@ -8,6 +8,7 @@ from app.db.session import get_db
 from app.models.attendance import AttendanceRecord
 from app.models.employee import Employee, FaceEmbedding
 from app.core.face_recognition import decode_image, get_face_embedding
+from app.core.websocket_manager import manager
 import numpy as np
 
 router = APIRouter()
@@ -59,6 +60,18 @@ async def mark_attendance(
         )
         db.add(record)
         db.commit()
+
+        # Broadcast update for real-time dashboard
+        await manager.broadcast({
+            "type": "dashboard_update",
+            "event": "attendance_marked",
+            "data": {
+                "employee_name": employee.full_name,
+                "timestamp": str(record.timestamp),
+                "event_type": event_type
+            }
+        })
+
         return {"status": "marked", "employee_name": employee.full_name}
 
     return {"status": "unrecognized", "message": "Face not recognized"}

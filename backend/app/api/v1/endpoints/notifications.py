@@ -6,6 +6,7 @@ from pydantic import BaseModel
 import redis
 import json
 from app.core.config import settings
+from app.core.websocket_manager import manager
 
 router = APIRouter()
 redis_client = redis.from_url(settings.REDIS_URL)
@@ -20,7 +21,13 @@ async def send_notification(
     notification: NotificationSend,
     current_user: Employee = Depends(deps.RoleChecker(["admin", "hr_staff"]))
 ):
-    # Logic to push to Redis for microservice to consume
+    # Real-time WebSocket notification
+    await manager.send_personal_message({
+        "type": "notification",
+        "data": notification.dict()
+    }, notification.user_id)
+
+    # Logic to push to Redis for microservice to consume (Email/SMS)
     redis_client.publish('notifications', json.dumps(notification.dict()))
 
     # Also store in MongoDB (mocked here)

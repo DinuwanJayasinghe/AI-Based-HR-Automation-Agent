@@ -1,9 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LayoutDashboard, Users, Calendar, BarChart3, MessageSquare, Bell } from 'lucide-react';
+import i18n from '../locales/i18n';
+import { useWebSockets } from '../hooks/useWebSockets';
 
 const Dashboard: React.FC = () => {
   const { t } = useTranslation();
+  const { lastMessage } = useWebSockets();
+  const [notifications, setNotifications] = useState<any[]>([]);
+  const [recentAttendance, setRecentAttendance] = useState<any[]>([
+    { employee_name: 'Employee 1', timestamp: '08:00 AM', status: 'On Time' },
+    { employee_name: 'Employee 2', timestamp: '08:15 AM', status: 'On Time' },
+    { employee_name: 'Employee 3', timestamp: '08:30 AM', status: 'On Time' },
+  ]);
+
+  useEffect(() => {
+    if (lastMessage) {
+      if (lastMessage.type === 'notification') {
+        setNotifications((prev) => [lastMessage.data, ...prev]);
+        console.log('New Notification:', lastMessage.data);
+      } else if (lastMessage.type === 'dashboard_update') {
+        if (lastMessage.event === 'attendance_marked') {
+          setRecentAttendance((prev) => [
+            {
+              employee_name: lastMessage.data.employee_name,
+              timestamp: new Date().toLocaleTimeString(),
+              status: 'Just now'
+            },
+            ...prev.slice(0, 2)
+          ]);
+        }
+      }
+    }
+  }, [lastMessage]);
 
   const stats = [
     { label: 'Active Employees', value: '124', icon: Users, color: 'text-blue-600' },
@@ -84,16 +113,16 @@ const Dashboard: React.FC = () => {
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
             <h3 className="text-lg font-bold mb-4">Recent Attendance</h3>
             <div className="space-y-4">
-              {[1, 2, 3].map((i) => (
+              {recentAttendance.map((att, i) => (
                 <div key={i} className="flex items-center justify-between py-2 border-b last:border-0">
                   <div className="flex items-center">
                     <div className="w-8 h-8 bg-gray-100 rounded-full mr-3" />
                     <div>
-                      <p className="font-medium">Employee {i}</p>
-                      <p className="text-xs text-gray-500">08:00 AM</p>
+                      <p className="font-medium">{att.employee_name}</p>
+                      <p className="text-xs text-gray-500">{att.timestamp}</p>
                     </div>
                   </div>
-                  <span className="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded">On Time</span>
+                  <span className="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded">{att.status}</span>
                 </div>
               ))}
             </div>
