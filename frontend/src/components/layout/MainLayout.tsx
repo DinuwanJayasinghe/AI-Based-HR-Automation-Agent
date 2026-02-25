@@ -1,6 +1,7 @@
 import React from 'react';
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
+import FloatingChat from '../FloatingChat';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 
@@ -17,6 +18,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       <div className="flex-1 flex flex-col min-w-0">
         <Navbar />
         <main className="p-8 flex-1 overflow-auto">
+          <FloatingChat />
           <div className="max-w-7xl mx-auto">
             <AnimatePresence mode="wait">
               <motion.div

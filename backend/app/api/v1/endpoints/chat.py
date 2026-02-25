@@ -5,6 +5,7 @@ from app.db.session import get_db
 from app.models.employee import Employee
 from app.models.leave import LeaveApplication
 from app.models.performance import PerformanceEvaluation
+from app.models.salary import SalaryRecord
 from app.core.config import settings
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage, SystemMessage
@@ -21,13 +22,15 @@ def get_user_context(user: Employee, db: Session):
     # Fetch relevant data for the user to ground the AI
     leaves = db.query(LeaveApplication).filter(LeaveApplication.employee_id == user.id).all()
     performance = db.query(PerformanceEvaluation).filter(PerformanceEvaluation.employee_id == user.id).order_by(PerformanceEvaluation.created_at.desc()).first()
+    salary = db.query(SalaryRecord).filter(SalaryRecord.employee_id == user.id).order_by(SalaryRecord.month.desc()).first()
 
     return {
         "name": user.full_name,
         "role": user.role,
         "department": str(user.department_id),
         "leaves": [f"{l.start_date} to {l.end_date}: {l.status}" for l in leaves[:3]],
-        "latest_performance_score": performance.overall_score if performance else "N/A"
+        "latest_performance_score": performance.overall_score if performance else "N/A",
+        "latest_salary_details": salary.calculation_log if salary else "N/A"
     }
 
 @router.post("/message")
@@ -48,13 +51,14 @@ async def chat_message(
 
     system_prompt = f"""
     You are an AI HR Assistant for organizational employees.
-    User Profile: {json.dumps(user_context)}
+    User Profile & Context: {json.dumps(user_context)}
 
     Guidelines:
-    1. Ground all answers in organizational context.
+    1. Ground all answers in organizational context and provided profile data.
     2. Support English, Sinhala, and Tamil. Respond in the same language as the user.
-    3. You can help with leave queries, performance questions, and general HR policy.
-    4. Be professional and helpful.
+    3. You can help with leave queries, performance questions, general HR policy, and salary calculation explanations.
+    4. If asked about salary, use the 'latest_salary_details' to explain the breakdown (Base + OT + Bonus - Deductions).
+    5. Be professional, empathetic, and helpful.
     """
 
     messages = [

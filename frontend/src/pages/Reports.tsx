@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-  PieChart, Pie, Cell
+  PieChart, Pie, Cell, AreaChart, Area
 } from 'recharts';
 import { FileDown, Filter, Calendar } from 'lucide-react';
 
@@ -20,7 +20,15 @@ const leaveData = [
   { name: 'Maternity', value: 15 },
 ];
 
-const COLORS = ['#0ea5e9', '#f43f5e', '#f59e0b', '#8b5cf6'];
+const salaryCostData = [
+  { month: 'Jan', cost: 1.2 },
+  { month: 'Feb', cost: 1.3 },
+  { month: 'Mar', cost: 1.25 },
+  { month: 'Apr', cost: 1.4 },
+  { month: 'May', cost: 1.45 },
+];
+
+const COLORS = ['#6366f1', '#10b981', '#f59e0b', '#8b5cf6'];
 
 const Reports: React.FC = () => {
   return (
@@ -43,7 +51,28 @@ const Reports: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+        <div className="glass-card p-6 rounded-2xl premium-shadow">
+          <h3 className="text-lg font-bold mb-6">Salary Cost Summary (Millions LKR)</h3>
+          <div className="h-64 w-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <AreaChart data={salaryCostData}>
+                <defs>
+                  <linearGradient id="colorCost" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#6366f1" stopOpacity={0.1}/>
+                    <stop offset="95%" stopColor="#6366f1" stopOpacity={0}/>
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                <XAxis dataKey="month" axisLine={false} tickLine={false} />
+                <YAxis axisLine={false} tickLine={false} />
+                <Tooltip contentStyle={{ borderRadius: '12px', border: 'none' }} />
+                <Area type="monotone" dataKey="cost" stroke="#6366f1" strokeWidth={3} fillOpacity={1} fill="url(#colorCost)" />
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        <div className="glass-card p-6 rounded-2xl premium-shadow">
           <h3 className="text-lg font-bold mb-6 flex justify-between items-center">
             Attendance Rate (%)
             <span className="text-xs font-normal text-gray-400">Weekly View</span>
@@ -61,7 +90,7 @@ const Reports: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+        <div className="glass-card p-6 rounded-2xl premium-shadow">
           <h3 className="text-lg font-bold mb-6">Leave Distribution</h3>
           <div className="h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">

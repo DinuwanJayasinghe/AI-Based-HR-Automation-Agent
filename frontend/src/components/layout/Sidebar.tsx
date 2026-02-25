@@ -11,18 +11,19 @@ const Sidebar: React.FC = () => {
 
   const menuItems = [
     { name: t('dashboard'), icon: LayoutDashboard, path: '/dashboard' },
+    { name: 'Employees', icon: Users, path: '/employees' },
+    { name: 'Departments', icon: FileText, path: '/departments' },
     { name: t('attendance'), icon: Users, path: '/attendance' },
     { name: t('leave'), icon: Calendar, path: '/leave' },
     { name: t('performance'), icon: BarChart3, path: '/performance' },
-    { name: t('chat'), icon: MessageSquare, path: '/chat' },
-    { name: 'Employees', icon: Users, path: '/employees' },
+    { name: 'Salary & Payslips', icon: FileText, path: '/salary' },
     { name: 'Recruitment', icon: Briefcase, path: '/recruitment' },
+    { name: t('chat'), icon: MessageSquare, path: '/chat' },
     { name: 'Reports', icon: FileText, path: '/reports' },
-    { name: 'Notifications', icon: Bell, path: '/notifications' },
   ];
 
   return (
-    <div className="w-64 bg-white border-r h-screen flex flex-col sticky top-0 shadow-sm">
+    <div className="w-64 glass-sidebar h-screen flex flex-col sticky top-0 z-20">
       <div className="p-6 border-b">
         <div className="flex items-center space-x-3">
           <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold">

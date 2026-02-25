@@ -23,6 +23,8 @@ class Employee(Base):
     role = Column(String(20), default="employee") # employee, hr_staff, admin, management
     status = Column(String(20), default="active") # active, inactive, on_leave, terminated
     hire_date = Column(Date, nullable=False)
+    base_salary = Column(Float, default=0.0)
+    hourly_rate = Column(Float, default=0.0)
     face_enrolled = Column(Boolean, default=False)
     password_hash = Column(String(255))
     created_at = Column(DateTime, default=datetime.utcnow)

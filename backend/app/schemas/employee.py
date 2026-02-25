@@ -12,6 +12,8 @@ class EmployeeBase(BaseModel):
     role: Optional[str] = "employee"
     status: Optional[str] = "active"
     hire_date: date
+    base_salary: Optional[float] = 0.0
+    hourly_rate: Optional[float] = 0.0
 
 class EmployeeCreate(EmployeeBase):
     password: str

@@ -4,12 +4,14 @@
 env/
 venv/
 ENV/
+.env.local
 
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
 .pytest_cache/
+*.log
 
 # Node
 node_modules/

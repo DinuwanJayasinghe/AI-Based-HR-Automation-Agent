@@ -18,3 +18,5 @@ chromadb
 pandas
 jinja2
 python-jose
+xhtml2pdf
+reportlab

@@ -8,17 +8,28 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
+          50: '#eef2ff',
+          100: '#e0e7ff',
+          200: '#c7d2fe',
+          300: '#a5b4fc',
+          400: '#818cf8',
+          500: '#6366f1', // Indigo 500
+          600: '#4f46e5', // Indigo 600
+          700: '#4338ca', // Indigo 700
+          800: '#3730a3',
+          900: '#312e81',
         },
-        secondary: {
-          500: '#64748b',
-          600: '#475569',
+        accent: {
+          500: '#10b981', // Emerald 500
+          600: '#059669',
+        },
+        warning: {
+          500: '#f59e0b', // Amber 500
         }
       },
+      backgroundImage: {
+        'glass-gradient': 'linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%)',
+      }
     },
   },
   plugins: [],

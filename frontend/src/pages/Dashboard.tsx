@@ -42,7 +42,7 @@ const Dashboard: React.FC = () => {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat) => (
-          <div key={stat.label} className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow cursor-pointer">
+          <div key={stat.label} className="glass-card p-6 rounded-2xl premium-shadow hover:scale-[1.02] transition-all duration-300 cursor-pointer">
             <div className="flex items-center justify-between mb-4">
               <div className={`p-3 rounded-xl ${stat.bg} ${stat.color}`}>
                 <stat.icon className="w-6 h-6" />
@@ -64,7 +64,7 @@ const Dashboard: React.FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Recent Attendance */}
-        <div className="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+        <div className="lg:col-span-2 glass-card rounded-2xl premium-shadow p-6">
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-lg font-bold">Live Attendance Feed</h3>
             <button className="text-sm font-bold text-primary-600 hover:text-primary-700">View All</button>
@@ -109,7 +109,7 @@ const Dashboard: React.FC = () => {
         </div>
 
         {/* System Alerts */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+        <div className="glass-card rounded-2xl premium-shadow p-6">
           <h3 className="text-lg font-bold mb-6 text-gray-900">Priority Alerts</h3>
           <div className="space-y-4">
             <div className="flex p-4 bg-rose-50 border border-rose-100 rounded-xl">

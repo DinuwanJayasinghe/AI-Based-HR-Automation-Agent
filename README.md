@@ -33,6 +33,8 @@ Comprehensive AI-powered HR Manager system for mid-sized organizations.
 6. Recruitment
 7. Reporting & Analytics
 8. Notification System
+9. Salary & Compensation Management
+10. Automated Payslip Generation
 
 ## Debugging
 

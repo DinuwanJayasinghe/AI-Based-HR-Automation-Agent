@@ -5,6 +5,13 @@ from app.core.config import settings
 from app.db.mongodb import connect_to_mongo, close_mongo_connection
 from app.db.session import engine
 from app.models.employee import Base
+from app.models.salary import SalaryRecord
+from app.models.compensation import CompensationRecord
+from app.models.attendance import AttendanceRecord
+from app.models.leave import LeaveApplication
+from app.models.performance import PerformanceEvaluation
+from app.models.recruitment import JobPosting, Candidate
+from app.models.audit import AuditLog
 
 # Create tables
 Base.metadata.create_all(bind=engine)

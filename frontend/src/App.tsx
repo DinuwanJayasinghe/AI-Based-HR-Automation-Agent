@@ -12,6 +12,8 @@ import Employees from './pages/Employees';
 import Recruitment from './pages/Recruitment';
 import Reports from './pages/Reports';
 import Notifications from './pages/Notifications';
+import Salary from './pages/Salary';
+import Departments from './pages/Departments';
 import MainLayout from './components/layout/MainLayout';
 import './locales/i18n';
 
@@ -34,6 +36,8 @@ const App: React.FC = () => {
           <Route path="/chat" element={<PrivateRoute><Chat /></PrivateRoute>} />
           <Route path="/employees" element={<PrivateRoute><Employees /></PrivateRoute>} />
           <Route path="/recruitment" element={<PrivateRoute><Recruitment /></PrivateRoute>} />
+          <Route path="/salary" element={<PrivateRoute><Salary /></PrivateRoute>} />
+          <Route path="/departments" element={<PrivateRoute><Departments /></PrivateRoute>} />
           <Route path="/reports" element={<PrivateRoute><Reports /></PrivateRoute>} />
           <Route path="/notifications" element={<PrivateRoute><Notifications /></PrivateRoute>} />
           <Route path="/" element={<Navigate to="/dashboard" replace />} />

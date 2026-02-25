@@ -38,13 +38,21 @@ def leave_approval_workflow():
         llm = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=settings.GOOGLE_API_KEY)
 
         prompt = f"""
-        Evaluate leave request:
-        Employee: {state['employee_data']}
-        Request: {state['request_data']}
-        Policies: {state['policy_chunks']}
+        Evaluate leave request for {state['employee_data']['name']}.
+
+        CONTEXT:
+        Employee Profile: {state['employee_data']}
+        Leave Request: {state['request_data']}
+        Company Policies (Retrieved): {state['policy_chunks']}
+
+        CRITERIA:
+        1. Check leave balance.
+        2. Check attendance score (if provided in profile).
+        3. Check performance trends.
+        4. Match against retrieved company policy chunks.
 
         Decision must be APPROVE, REJECT, or ESCALATE.
-        Provide a plain-English explanation.
+        Provide a transparent, plain-English explanation.
         Return JSON format: {{"decision": "...", "explanation": "...", "policy_refs": [...]}}
         """
 
