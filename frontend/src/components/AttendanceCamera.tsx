@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Camera, RefreshCw } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 const AttendanceCamera: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -48,9 +49,11 @@ const AttendanceCamera: React.FC = () => {
         if (result.status === 'marked') {
           setStatus('success');
           setMessage(`Attendance marked for ${result.employee_name}`);
+          toast.success(`Welcome, ${result.employee_name}!`);
         } else {
           setStatus('error');
           setMessage(result.message || 'Recognition failed');
+          toast.error(result.message || 'Recognition failed');
         }
       } catch (err) {
         setStatus('error');

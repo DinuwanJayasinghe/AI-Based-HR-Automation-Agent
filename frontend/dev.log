@@ -54,3 +54,98 @@ AggregateError [ECONNREFUSED]:
 11:23:57 AM [vite] hmr update /src/pages/Reports.tsx, /src/index.css
 11:25:46 AM [vite] hmr update /src/pages/Reports.tsx, /src/index.css
 11:25:59 AM [vite] hmr update /src/pages/Reports.tsx, /src/index.css
+9:19:00 AM [vite] page reload tailwind.config.js
+9:19:07 AM [vite] page reload src/main.tsx
+9:19:10 AM [vite] page reload src/main.tsx
+9:19:17 AM [vite] hmr update /src/components/layout/Navbar.tsx, /src/index.css
+9:19:39 AM [vite] hmr update /src/components/layout/Sidebar.tsx, /src/index.css
+9:19:44 AM [vite] hmr update /src/components/layout/MainLayout.tsx, /src/index.css
+9:19:54 AM [vite] hmr update /src/pages/Dashboard.tsx, /src/index.css
+9:20:05 AM [vite] hmr update /src/pages/Dashboard.tsx, /src/index.css
+9:20:20 AM [vite] hmr update /src/pages/Dashboard.tsx, /src/index.css
+9:21:12 AM [vite] hmr update /src/App.tsx, /src/index.css
+9:21:15 AM [vite] hmr update /src/pages/Login.tsx, /src/index.css
+9:21:19 AM [vite] hmr update /src/index.css, /src/pages/Dashboard.tsx
+9:21:22 AM [vite] hmr update /src/components/AttendanceCamera.tsx, /src/index.css
+9:23:23 AM [vite] hmr update /src/pages/Employees.tsx, /src/index.css
+9:23:29 AM [vite] hmr update /src/components/layout/Navbar.tsx, /src/index.css
+9:24:19 AM [vite] hmr update /src/index.css
+9:24:44 AM [vite] hmr update /src/pages/Leave.tsx, /src/index.css
+9:24:48 AM [vite] hmr update /src/pages/Recruitment.tsx, /src/index.css
+9:24:53 AM [vite] hmr update /src/components/LeaveForm.tsx, /src/index.css
+Failed to resolve import "react-hot-toast" from "src/App.tsx". Does the file exist?
+Failed to resolve import "react-hot-toast" from "src/App.tsx". Does the file exist?
+Failed to resolve import "react-hot-toast" from "src/pages/Login.tsx". Does the file exist?
+Failed to resolve import "react-hot-toast" from "src/pages/Employees.tsx". Does the file exist?
+9:26:17 AM [vite] Internal server error: Failed to resolve import "react-hot-toast" from "src/App.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /app/frontend/src/App.tsx:18:24
+  31 |  import Departments from "./pages/Departments";
+  32 |  import MainLayout from "./components/layout/MainLayout";
+  33 |  import { Toaster } from "react-hot-toast";
+     |                           ^
+  34 |  import "./locales/i18n";
+  35 |  const PrivateRoute = ({ children }) => {
+      at formatError (file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:44066:46)
+      at TransformContext.error (file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:44062:19)
+      at normalizeUrl (file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:41845:33)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:41999:47
+      at async Promise.all (index 19)
+      at async TransformContext.transform (file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:41915:13)
+      at async Object.transform (file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:44356:30)
+      at async loadAndTransform (file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:55088:29)
+      at async viteTransformMiddleware (file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:64699:32)
+Failed to resolve import "react-hot-toast" from "src/hooks/useWebSockets.ts". Does the file exist?
+Failed to resolve import "react-hot-toast" from "src/components/AttendanceCamera.tsx". Does the file exist?
+Failed to resolve import "react-hot-toast" from "src/pages/Login.tsx". Does the file exist?
+Failed to resolve import "react-hot-toast" from "src/pages/Employees.tsx". Does the file exist?
+9:26:21 AM [vite] ✨ new dependencies optimized: framer-motion
+9:26:21 AM [vite] ✨ optimized dependencies changed. reloading
+Failed to resolve import "react-hot-toast" from "src/App.tsx". Does the file exist?
+Failed to resolve import "react-hot-toast" from "src/pages/Login.tsx". Does the file exist?
+9:26:21 AM [vite] Internal server error: Failed to resolve import "react-hot-toast" from "src/App.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /app/frontend/src/App.tsx:18:24
+  31 |  import Departments from "./pages/Departments";
+  32 |  import MainLayout from "./components/layout/MainLayout";
+  33 |  import { Toaster } from "react-hot-toast";
+     |                           ^
+  34 |  import "./locales/i18n";
+  35 |  const PrivateRoute = ({ children }) => {
+      at formatError (file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:44066:46)
+      at TransformContext.error (file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:44062:19)
+      at normalizeUrl (file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:41845:33)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:41999:47
+      at async Promise.all (index 19)
+      at async TransformContext.transform (file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:41915:13)
+      at async Object.transform (file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:44356:30)
+      at async loadAndTransform (file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:55088:29)
+      at async viteTransformMiddleware (file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:64699:32)
+Failed to resolve import "react-hot-toast" from "src/pages/Login.tsx". Does the file exist?
+Failed to resolve import "react-hot-toast" from "src/pages/Employees.tsx". Does the file exist?
+Failed to resolve import "react-hot-toast" from "src/pages/Employees.tsx". Does the file exist?
+Failed to resolve import "react-hot-toast" from "src/hooks/useWebSockets.ts". Does the file exist?
+Failed to resolve import "react-hot-toast" from "src/components/AttendanceCamera.tsx". Does the file exist?
+9:29:39 AM [vite] Internal server error: Failed to resolve import "react-hot-toast" from "src/App.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /app/frontend/src/App.tsx:18:24
+  31 |  import Departments from "./pages/Departments";
+  32 |  import MainLayout from "./components/layout/MainLayout";
+  33 |  import { Toaster } from "react-hot-toast";
+     |                           ^
+  34 |  import "./locales/i18n";
+  35 |  const PrivateRoute = ({ children }) => {
+      at formatError (file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:44066:46)
+      at TransformContext.error (file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:44062:19)
+      at normalizeUrl (file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:41845:33)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:41999:47
+      at async Promise.all (index 19)
+      at async TransformContext.transform (file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:41915:13)
+      at async Object.transform (file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:44356:30)
+      at async loadAndTransform (file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:55088:29)
+      at async viteTransformMiddleware (file:///app/frontend/node_modules/vite/dist/node/chunks/dep-827b23df.js:64699:32)
+Failed to resolve import "react-hot-toast" from "src/pages/Login.tsx". Does the file exist?
+Failed to resolve import "react-hot-toast" from "src/pages/Employees.tsx". Does the file exist?

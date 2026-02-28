@@ -15,7 +15,7 @@ const Recruitment: React.FC = () => {
           <h2 className="text-3xl font-bold text-gray-900 mb-2">Recruitment Pipeline</h2>
           <p className="text-gray-500">Manage job postings and AI-screened candidates.</p>
         </div>
-        <button className="bg-primary-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-primary-700 transition-all flex items-center shadow-lg shadow-primary-200">
+        <button className="btn-primary">
           <Plus className="w-5 h-5 mr-2" />
           Create Job Posting
         </button>

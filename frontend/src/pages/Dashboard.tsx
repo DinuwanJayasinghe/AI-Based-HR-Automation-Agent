@@ -35,28 +35,28 @@ const Dashboard: React.FC = () => {
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">Morning, John 👋</h2>
-        <p className="text-gray-500">Here's what's happening in your organization today.</p>
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-slate-100 mb-2">Morning, John 👋</h2>
+        <p className="text-gray-500 dark:text-slate-400">Here's what's happening in your organization today.</p>
       </div>
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat) => (
-          <div key={stat.label} className="glass-card p-6 rounded-2xl premium-shadow hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+          <div key={stat.label} className="glass-card dark:bg-slate-900/60 p-6 rounded-2xl premium-shadow hover:scale-[1.02] transition-all duration-300 cursor-pointer">
             <div className="flex items-center justify-between mb-4">
-              <div className={`p-3 rounded-xl ${stat.bg} ${stat.color}`}>
+              <div className={`p-3 rounded-xl ${stat.bg} dark:bg-opacity-10 ${stat.color}`}>
                 <stat.icon className="w-6 h-6" />
               </div>
               <div className={`flex items-center text-xs font-bold px-2 py-1 rounded-lg ${
-                stat.trend.startsWith('+') ? 'bg-emerald-50 text-emerald-600' : 'bg-rose-50 text-rose-600'
+                stat.trend.startsWith('+') ? 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600' : 'bg-rose-50 dark:bg-rose-900/20 text-rose-600'
               }`}>
                 <TrendingUp className="w-3 h-3 mr-1" />
                 {stat.trend}
               </div>
             </div>
             <div>
-              <p className="text-2xl font-bold text-gray-900 mb-1">{stat.value}</p>
-              <p className="text-sm font-medium text-gray-500">{stat.label}</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-1">{stat.value}</p>
+              <p className="text-sm font-medium text-gray-500 dark:text-slate-400">{stat.label}</p>
             </div>
           </div>
         ))}
@@ -64,10 +64,10 @@ const Dashboard: React.FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Recent Attendance */}
-        <div className="lg:col-span-2 glass-card rounded-2xl premium-shadow p-6">
+        <div className="lg:col-span-2 glass-card dark:bg-slate-900/60 rounded-2xl premium-shadow p-6">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-lg font-bold">Live Attendance Feed</h3>
-            <button className="text-sm font-bold text-primary-600 hover:text-primary-700">View All</button>
+            <h3 className="text-lg font-bold dark:text-slate-100">Live Attendance Feed</h3>
+            <button className="text-sm font-bold text-primary-600 dark:text-primary-400 hover:text-primary-700">View All</button>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-left">
@@ -81,17 +81,17 @@ const Dashboard: React.FC = () => {
               </thead>
               <tbody className="divide-y divide-gray-50">
                 {recentAttendance.map((att, i) => (
-                  <tr key={i} className="group hover:bg-gray-50/50 transition-colors">
+                  <tr key={i} className="group hover:bg-gray-50/50 dark:hover:bg-slate-800/50 transition-colors">
                     <td className="py-4">
                       <div className="flex items-center">
-                        <div className="w-8 h-8 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center font-bold text-xs mr-3">
+                        <div className="w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400 flex items-center justify-center font-bold text-xs mr-3">
                           {att.employee_name.charAt(0)}
                         </div>
-                        <span className="font-medium text-sm text-gray-900">{att.employee_name}</span>
+                        <span className="font-medium text-sm text-gray-900 dark:text-slate-200">{att.employee_name}</span>
                       </div>
                     </td>
-                    <td className="py-4 text-sm text-gray-500">{att.timestamp}</td>
-                    <td className="py-4 text-sm text-gray-500">Engineering</td>
+                    <td className="py-4 text-sm text-gray-500 dark:text-slate-400">{att.timestamp}</td>
+                    <td className="py-4 text-sm text-gray-500 dark:text-slate-400">Engineering</td>
                     <td className="py-4">
                       <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
                         att.status === 'On Time' || att.status === 'Just now'
@@ -109,10 +109,10 @@ const Dashboard: React.FC = () => {
         </div>
 
         {/* System Alerts */}
-        <div className="glass-card rounded-2xl premium-shadow p-6">
-          <h3 className="text-lg font-bold mb-6 text-gray-900">Priority Alerts</h3>
+        <div className="glass-card dark:bg-slate-900/60 rounded-2xl premium-shadow p-6">
+          <h3 className="text-lg font-bold mb-6 text-gray-900 dark:text-slate-100">Priority Alerts</h3>
           <div className="space-y-4">
-            <div className="flex p-4 bg-rose-50 border border-rose-100 rounded-xl">
+            <div className="flex p-4 bg-rose-50 dark:bg-rose-900/20 border border-rose-100 dark:border-rose-900/30 rounded-xl">
               <AlertTriangle className="w-5 h-5 text-rose-600 shrink-0 mr-3" />
               <div>
                 <p className="text-sm font-bold text-rose-900">Unrecognized Face</p>
@@ -127,7 +127,7 @@ const Dashboard: React.FC = () => {
               </div>
             </div>
             <div className="mt-6">
-              <button className="w-full py-3 bg-gray-50 text-gray-600 text-sm font-bold rounded-xl hover:bg-gray-100 transition-colors">
+              <button className="w-full py-3 bg-gray-50 dark:bg-slate-800 text-gray-600 dark:text-slate-400 text-sm font-bold rounded-xl hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">
                 View Security Audit Log
               </button>
             </div>

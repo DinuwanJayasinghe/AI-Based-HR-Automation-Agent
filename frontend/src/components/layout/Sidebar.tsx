@@ -23,8 +23,8 @@ const Sidebar: React.FC = () => {
   ];
 
   return (
-    <div className="w-64 glass-sidebar h-screen flex flex-col sticky top-0 z-20">
-      <div className="p-6 border-b">
+    <div className="w-64 glass-sidebar dark:bg-slate-900/80 dark:border-slate-800 h-screen flex flex-col sticky top-0 z-20">
+      <div className="p-6 border-b dark:border-slate-800">
         <div className="flex items-center space-x-3">
           <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold">
             H
@@ -43,8 +43,8 @@ const Sidebar: React.FC = () => {
             className={({ isActive }) => `
               flex items-center px-4 py-3 rounded-xl transition-all duration-200
               ${isActive
-                ? 'bg-primary-50 text-primary-600 shadow-sm'
-                : 'text-gray-500 hover:bg-gray-50 hover:text-gray-900'}
+                ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 shadow-sm'
+                : 'text-gray-500 dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-gray-900 dark:hover:text-slate-100'}
             `}
           >
             <item.icon className="w-5 h-5 mr-3" />

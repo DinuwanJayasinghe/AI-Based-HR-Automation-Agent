@@ -63,7 +63,7 @@ const LeaveForm: React.FC = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-primary-600 text-white py-4 rounded-xl font-bold hover:bg-primary-700 transition-all shadow-lg shadow-primary-200 flex items-center justify-center disabled:opacity-50"
+            className="btn-primary w-full"
           >
             {isLoading ? <Loader2 className="w-5 h-5 animate-spin mr-2" /> : 'Apply with AI Review'}
           </button>

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
+import toast from 'react-hot-toast';
 
 export const useWebSockets = () => {
   const token = useSelector((state: RootState) => state.auth.token);
@@ -17,6 +18,11 @@ export const useWebSockets = () => {
     socket.onmessage = (event) => {
       const message = JSON.parse(event.data);
       setLastMessage(message);
+      if (message.type === 'notification') {
+        toast(message.data.message, {
+          icon: message.data.type === 'error' ? '🚫' : '🔔',
+        });
+      }
     };
 
     socket.onclose = () => {

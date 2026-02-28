@@ -15,6 +15,7 @@ import Notifications from './pages/Notifications';
 import Salary from './pages/Salary';
 import Departments from './pages/Departments';
 import MainLayout from './components/layout/MainLayout';
+import { Toaster } from 'react-hot-toast';
 import './locales/i18n';
 
 const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
@@ -26,6 +27,7 @@ const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
 const App: React.FC = () => {
   return (
     <Provider store={store}>
+      <Toaster position="top-right" reverseOrder={false} />
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />

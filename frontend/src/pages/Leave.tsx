@@ -42,7 +42,7 @@ const Leave: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <LeaveForm />
 
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+        <div className="glass-card p-6 rounded-2xl shadow-sm">
           <h3 className="text-xl font-bold mb-6">Application History</h3>
           <div className="space-y-6">
             {[
@@ -56,10 +56,10 @@ const Leave: React.FC = () => {
                 </div>
                 <div className="flex-1">
                   <div className="flex justify-between">
-                    <p className="font-bold text-sm text-gray-900">{request.type} Leave</p>
+                    <p className="font-bold text-sm text-gray-900 dark:text-slate-100">{request.type} Leave</p>
                     <span className="text-xs text-gray-400">{request.date}</span>
                   </div>
-                  <div className="mt-2 p-3 bg-gray-50 rounded-xl border border-gray-100">
+                  <div className="mt-2 p-3 bg-gray-50 dark:bg-slate-800 rounded-xl border dark:border-slate-700">
                     <div className="flex items-center text-[10px] font-bold text-primary-600 mb-1 uppercase tracking-wider">
                       <Info className="w-3 h-3 mr-1" />
                       AI Explanation

@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Lock, Mail, ChevronRight } from 'lucide-react';
+import toast from 'react-hot-toast';
 import i18n from '../locales/i18n';
 
 const Login: React.FC = () => {
@@ -11,9 +12,9 @@ const Login: React.FC = () => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data: any) => {
-    console.log(data);
     // Mock login success
     localStorage.setItem('token', 'mock-token');
+    toast.success('Successfully logged in!');
     navigate('/dashboard');
   };
 

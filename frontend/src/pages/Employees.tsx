@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Search, UserPlus, MoreVertical, Mail, Phone, MapPin } from 'lucide-react';
+import { Search, UserPlus, MoreVertical, Mail, Phone, MapPin, Loader2 } from 'lucide-react';
+import Modal from '../components/Modal';
+import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 
 const Employees: React.FC = () => {
   const [employees, setEmployees] = useState<any[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { register, handleSubmit, reset } = useForm();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     // Mock fetching employees
@@ -17,14 +23,71 @@ const Employees: React.FC = () => {
     <div className="space-y-8">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">Employee Directory</h2>
-          <p className="text-gray-500">Manage your workforce lifecycle and profiles.</p>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Employee Directory</h2>
+          <p className="text-gray-500 dark:text-slate-400">Manage your workforce lifecycle and profiles.</p>
         </div>
-        <button className="inline-flex items-center bg-primary-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-primary-700 transition-all shadow-lg shadow-primary-200">
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="inline-flex items-center bg-primary-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-primary-700 transition-all shadow-lg shadow-primary-200"
+        >
           <UserPlus className="w-5 h-5 mr-2" />
           Add Employee
         </button>
       </div>
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Register New Employee"
+      >
+        <form onSubmit={handleSubmit(async (data) => {
+          setIsSubmitting(true);
+          // Mock API call
+          await new Promise(r => setTimeout(r, 1000));
+          toast.success('Employee registered successfully!');
+          setIsSubmitting(false);
+          setIsModalOpen(false);
+          reset();
+        })} className="space-y-4">
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Full Name</label>
+              <input {...register('full_name')} required className="w-full bg-gray-50 dark:bg-slate-800 border-none rounded-xl py-3 px-4" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Employee Code</label>
+              <input {...register('employee_code')} required className="w-full bg-gray-50 dark:bg-slate-800 border-none rounded-xl py-3 px-4" />
+            </div>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Email Address</label>
+            <input {...register('email')} type="email" required className="w-full bg-gray-50 dark:bg-slate-800 border-none rounded-xl py-3 px-4" />
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Department</label>
+              <select {...register('department_id')} className="w-full bg-gray-50 dark:bg-slate-800 border-none rounded-xl py-3 px-4">
+                <option value="">Select Dept</option>
+                <option value="1">Engineering</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Role</label>
+              <select {...register('role')} className="w-full bg-gray-50 dark:bg-slate-800 border-none rounded-xl py-3 px-4">
+                <option value="employee">Employee</option>
+                <option value="hr_staff">HR Staff</option>
+              </select>
+            </div>
+          </div>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full bg-primary-600 text-white py-4 rounded-xl font-bold hover:bg-primary-700 transition-all flex items-center justify-center disabled:opacity-50"
+          >
+            {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Complete Registration'}
+          </button>
+        </form>
+      </Modal>
 
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
         <div className="p-6 border-b flex flex-col md:flex-row gap-4 justify-between items-center">
