@@ -1,0 +1,35 @@
+{
+  "chat_history": [
+    {
+      "_id": { "$oid": "60a7b8109dad11d180b400c0" },
+      "session_id": "session-123",
+      "user_id": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
+      "messages": [
+        { "sender": "user", "text": "How many annual leave days do I have?", "timestamp": { "$date": "2024-05-20T10:00:00Z" } },
+        { "sender": "bot", "text": "You have 12 annual leave days remaining for 2024.", "timestamp": { "$date": "2024-05-20T10:00:02Z" } }
+      ],
+      "language": "en"
+    }
+  ],
+  "system_logs": [
+    {
+      "_id": { "$oid": "60a7b8109dad11d180b400c1" },
+      "level": "INFO",
+      "module": "ATTENDANCE",
+      "message": "Face recognized successfully for ENG001",
+      "timestamp": { "$date": "2024-05-20T08:30:00Z" },
+      "metadata": { "confidence": 0.98, "device": "Front Gate Camera" }
+    }
+  ],
+  "notifications": [
+    {
+      "_id": { "$oid": "60a7b8109dad11d180b400c2" },
+      "user_id": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
+      "title": "Salary Processed",
+      "body": "Your salary for May 2024 has been calculated and is ready for review.",
+      "type": "info",
+      "read": false,
+      "created_at": { "$date": "2024-05-31T17:00:00Z" }
+    }
+  ]
+}
